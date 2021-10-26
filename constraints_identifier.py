@@ -299,7 +299,5 @@ def find_constraints(max_depth=None, extract_rules=True, supp=0.0000, show_tree=
 
 
 if __name__ == "__main__":
-    find_constraints(env_name='CartPole-v1', max_depth=None, conf=1.0, supp=0.00, show_tree=False, time_steps=20000)
-    find_constraints(env_name='CartPole-v1', max_depth=None, conf=0.95, supp=0.005, show_tree=False, time_steps=20000)
     find_constraints(env_name='LunarLander-v2', max_depth=None, conf=1.0, supp=0.00, show_tree=False, time_steps=20000)
     find_constraints(env_name='LunarLander-v2', max_depth=None, conf=0.95, supp=0.005, show_tree=False, time_steps=20000)

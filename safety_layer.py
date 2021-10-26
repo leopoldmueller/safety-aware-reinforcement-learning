@@ -33,11 +33,11 @@ def get_counters(statistic_dict, action_space, session_num):
 def check_continuous_action(statistic_dict, actions_dicts_array, con_action, obs, granularity,
                             session, env):
     dis_action = []
-    for a in range(len(con_action)):
+    for a in range(len(con_action[0])):
         dis_action.append(get_discrete_action(start=env.action_space.low[a],
                                               stop=env.action_space.high[a],
                                               num=granularity,
-                                              con_action=con_action))
+                                              con_action=con_action[0][a]))
 
     action = con_action
 
@@ -61,7 +61,8 @@ def check_continuous_action(statistic_dict, actions_dicts_array, con_action, obs
 
                 else:
                     statistic_dict[m]['count_n'][i][session] += 1
-                action[m] = actions_dicts_array[m][statistic_dict[m]['actions'][i]]
+
+                action[0][m] = actions_dicts_array[m][statistic_dict[m]['actions'][i]]
                 # stop as soon as a rule takes effect
                 break
 
@@ -119,7 +120,7 @@ def count_violations(env, model, session, path_check, time_steps_test, granulari
 
         # get actions_dict
         for j in range(action_space):
-            actions_dict = get_actions_dict(k=granularity, low=env.action_space.low[j], high=env.action_space.high[j])
+            actions_dict = get_actions_dict(granularity=granularity, low=env.action_space.low[j], high=env.action_space.high[j])
 
             # for action m save possible actions (actions_dict) in actions_dicts_array
             actions_dicts_array.append(actions_dict)
@@ -154,7 +155,6 @@ def count_violations(env, model, session, path_check, time_steps_test, granulari
 
             # get start state
             obs = env.reset()
-
             # add 1 if new episode starts
             episode_starts_array.append(1)
 
@@ -173,7 +173,7 @@ def count_violations(env, model, session, path_check, time_steps_test, granulari
                     # check next action
                     statistic_dict, action = check_continuous_action(statistic_dict=statistic_dict,
                                                                      actions_dicts_array=actions_dicts_array,
-                                                                     con_action=action, obs=obs, env=env,
+                                                                     con_action=action, obs=obs[0], env=env,
                                                                      granularity=granularity, session=session)
 
                 # get next state, reward, done and info

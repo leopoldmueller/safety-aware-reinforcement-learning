@@ -226,12 +226,12 @@ def visualize_violations_of_rules(env_name, granularity, max_depth, action_index
 
     path_input = 'output\\constraints\\{}\\granularity_{}\\max_depth_{}\\' \
                  'pre_learn_{}_learn_{}_test_{}_action_{}.csv'.format(env_name,
-                                                                                                   granularity,
-                                                                                                   max_depth,
-                                                                                                   time_steps_pre_train,
-                                                                                                   time_steps_learn,
-                                                                                                   time_steps_test,
-                                                                                                   action_index_m)
+                                                                      granularity,
+                                                                      max_depth,
+                                                                      time_steps_pre_train,
+                                                                      time_steps_learn,
+                                                                      time_steps_test,
+                                                                      action_index_m)
 
     data = pd.read_csv(filepath_or_buffer=path_input, sep=';', converters={'ts': clean,
                                                                            'count_p_rel': clean,

@@ -19,14 +19,6 @@ def get_discrete_action(start, stop, num, con_action):
     return disc_action
 
 
-def get_actions_dict(k, low, high):
-    actions_dict = {}
-    actions = np.linspace(low, high, num=k)
-    for i in range(len(actions)):
-        actions_dict[i] = actions[i]
-    return actions_dict
-
-
 def test_model(model, env, num_episodes=None, time_steps=None, render=None):
     if num_episodes is None:
         num_episodes = int(input('Enter num_episodes:'))
