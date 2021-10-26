@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+pandas = "*"
+stable--baselines = "*"
+scikit-learn = "*"
+stable-baselines = {extras = ["mpi"], version = "*"}
+stable-baselines3 = {extras = ["extra"], version = "*"}
+graphviz = "*"
+gym = {extras = ["box2d"], version = "*"}
+box2d = "*"
+box2d-kengz = "*"
+tensorflow = "==1.15"
+dtreeviz = "*"
+seaborn = "*"
+plotly = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
